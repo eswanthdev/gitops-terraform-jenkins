@@ -14,7 +14,9 @@ try {
 
   // Run terraform init
   stage('init') {
-    node {
+    
+    node { echo "Running ${env.AWS_ACCESS_KEY_ID} on ${env.AWS_SECRET_ACCESS_KEY}" }
+//    node {
 //      withCredentials([[
 //        $class: 'AmazonWebServicesCredentialsBinding',
 //        credentialsId: 'awsCredentials',
@@ -22,7 +24,8 @@ try {
 //        AWS_SECRET_ACCESS_KEY: 'Secret Access Key'
 //        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
 //        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'        
-//      ]]) {
+//      ]]) 
+      {
         ansiColor('xterm') {
           sh 'terraform init'
         }
