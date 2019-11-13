@@ -1,5 +1,8 @@
 // Jenkinsfile
-// String credentialsId = 'awsCredentials'
+//String credentialsId = 'awsCredentials'
+String AWS_ACCESS_KEY_ID = ${env.AWS_ACCESS_KEY_ID}
+String AWS_SECRET_ACCESS_KEY = ${env.AWS_SECRET_ACCESS_KEY}
+String AWS_DEFAULT_REGION = ${env.AWS_DEFAULT_REGION}
 
 try {
   stage('checkout') {
@@ -12,14 +15,14 @@ try {
   // Run terraform init
   stage('init') {
     node {
-      withCredentials([[
-        $class: 'AmazonWebServicesCredentialsBinding',
-        credentialsId: 'awsCredentials',
-        AWS_ACCESS_KEY_ID: 'Access Key ID',
-        AWS_SECRET_ACCESS_KEY: 'Secret Access Key'
-  //      accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-    //    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'        
-      ]]) {
+//      withCredentials([[
+//        $class: 'AmazonWebServicesCredentialsBinding',
+//        credentialsId: 'awsCredentials',
+//        AWS_ACCESS_KEY_ID: 'Access Key ID',
+//        AWS_SECRET_ACCESS_KEY: 'Secret Access Key'
+//        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+//        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'        
+//      ]]) {
         ansiColor('xterm') {
           sh 'terraform init'
         }
