@@ -4,7 +4,7 @@ variable "count" {
 
 variable "key_name" {
   description = "Private key name to use with instance"
-  default     = "terraform"
+  default     = "ansible-key121"
 }
 
 variable "instance_type" {
